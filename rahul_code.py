@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jan 19 16:23:31 2023
 
 @author: rak29
 """
@@ -128,6 +127,19 @@ plt.plot(pred_year,pred_ind,label="predicted values")
 plt.legend()
 plt.show()
 
+print(df_gdpt)
+plt.figure()
+#plt.plot(df_gdpt["year"], df_gdpt["UK"])
+plt.plot(df_gdpt["year"], df_gdpt["INDIA"])
+plt.xlim(1991,2020)
+plt.xlabel("Year")
+plt.ylabel("GDP")
+plt.legend(['IN','UK'])
+plt.title("GDP per capita, PPP (current international $)")
+#plt.savefig("GDP_Per_Capita.png", dpi = 300, bbox_inches='tight')
+plt.show()
+
+
 
 df_co2t= df_co2t.iloc[:,1:3]
 #print(df_co2t)
@@ -136,16 +148,9 @@ label = kmean.labels_
 plt.scatter(df_co2t["UK"],df_co2t["INDIA"],c=label,cmap="jet")
 plt.title("UK and India")
 c = kmean.cluster_centers_
-
 plt.show()
 
-"""
-for i in range(3):
-    xc,yc = c[i,:]
-    plt.plot(xc,yc,"ok",markersize=9)
-plt.figure()
 
-"""
 india = pd.DataFrame()
 india["co2_emission"] = df_co2t["INDIA"]
 india["renewable_energy"] = df_renewt["INDIA"]
